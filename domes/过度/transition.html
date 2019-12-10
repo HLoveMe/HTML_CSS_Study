@@ -1,0 +1,53 @@
+<!--
+ * @ one cat biubiubiu ~~~
+ * @Date: 2018-10-23 00:11:18
+ * @Author: zzh
+ * @Description: 
+ -->
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Untitled Document</title>
+    <style>
+      #dome1 {
+        width: 100px;
+        height: 30px;
+        background-color: red;
+
+        transition: width 2s linear;
+      }
+      #dome1:hover {
+        width: 300px;
+      }
+      /* ===================================== */
+      #dome2 {
+        width: 100px;
+        height: 30px;
+        background-color: orange;
+        margin-top: 40px;
+        transition: width 2s linear;
+      }
+      .dome2T{
+          width: 400px !important;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="dome1">
+      鼠标悬浮
+    </div>
+    <div id="dome2">点击</div>
+
+    <script>
+      let el = document.getElementById("dome2");
+      el.addEventListener("click", function click(_ev) {
+        console.log(_ev,el);
+        el.classList.add("dome2T")
+        setTimeout(() => {
+            el.classList.remove("dome2T")
+        }, (4000));
+      });
+    </script>
+  </body>
+</html>
