@@ -1,3 +1,4 @@
+import { any } from 'prelude-ls'
 
 Object
     prototype
@@ -109,7 +110,7 @@ Object
             return newobj;
         }
 
-obj Function Object (关系)
+obj Function Object(function Object{}) (关系)
     > 任何对象 或者（Function | Object）有 __proto__ 指向创建该对象的函数的原型链
     > 只有函数(function ABCD{} || Function) 和 Object 才会有prototype属性。 实例没有
 
@@ -154,7 +155,32 @@ obj Function Object (关系)
 
 
 
+ constructor 属性专为Function设计
+    constructor 属性返回对创建此对象的函数的引用  可以被替换的
+
+    any.constructor == any.__proto__.constructor 查找过程
+
+    functon ABCD(){
+        1:ABCD指定prototype
+        2:prototype指定 constructor 为 ABCD //ABCD.prototype.constructor = ABCD
+    }
+
+    Object == function Object(){
+        为Object指定prototype为AA
+        为AA指定 constructor 为 Object //Object.prototype.constructor = Object
+    }
+
+    Function == function Function(){
+        为Function指定prototype为AA
+        为AA指定 constructor 为 Function //Function.prototype.constructor = Function
+    }
+
+    let abcd = new ABCD();
+    abcd.constructor == abcd.__proto__.constructor == ABCD.prototype.constructor == ABCD
+
+    ABCD.constructor == Function == ABCD.__proto__.constructor == Function.prototype.constructor == Object.constructor == Object.__proto__.constructor
+
+    Object.prototype.constructor == Object
 
 
-
-
+    [Object.constructor == Object.__proto__.constructor == Function.prototype.constructor == Function]
