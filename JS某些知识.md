@@ -7,3 +7,9 @@
 	```
 	
 	* 监听元素和另一个元素的位置关系 [图片懒加载功能]
+
+* globalThis  标准 直接拿到顶层对象
+
+	* 浏览器里面，顶层对象是 window，但 Node 和 Web Worker 没有window。
+	* 浏览器和 Web Worker 里面，self 也指向顶层对象，但是 Node 没有 self。
+	* Node 里面，顶层对象是 global，但其他环境都不支持
