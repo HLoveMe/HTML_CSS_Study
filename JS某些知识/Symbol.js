@@ -23,9 +23,9 @@ es6 新增
 
                 申明(替换)对应的迭代器方法 当你调用forin 系统会调用你 申明(替换）的方法
 
-        系统Symbol 如果对象包含该Symbol属性  会在执行时调用【见底 替换】
+        系统Symbol 如果对象包含该Symbol属性  会在执行时调用【见底 替换】 【https://blog.csdn.net/ixygj197875/article/details/79165218】
 
-            Symbol.hasInstance
+            Symbol.hasInstance   instanceof 时候调用
             Symbol.isConcatSpreadable
             Symbol.iterator
             Symbol.match
@@ -33,8 +33,8 @@ es6 新增
             Symbol.replace 替换行为
             Symbol.search
             Symbol.species
-            Symbol.split
-            Symbol.toPrimitive
+            Symbol.split 调用split时候调用
+            Symbol.toPrimitive  类型转换时调用 a= { [Symbol.toPrimitive](){return 1}} ;a==1
             Symbol.toStringTag
             Symbol.unscopables
 
@@ -96,3 +96,11 @@ es6 新增
             yield 3;
         };
         console.log([...myIterable]); // [1, 2, 3]
+
+        class AAA{
+            static [Symbol.hasInstance](x){
+                return typeof x == 'number'
+            }
+        }
+
+        111 instanceof AAA
