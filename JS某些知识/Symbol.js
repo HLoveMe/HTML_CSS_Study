@@ -26,7 +26,7 @@ es6 新增
         系统Symbol 如果对象包含该Symbol属性  会在执行时调用【见底 替换】 【https://blog.csdn.net/ixygj197875/article/details/79165218】
 
             Symbol.hasInstance   instanceof 时候调用
-            Symbol.isConcatSpreadable
+            Symbol.isConcatSpreadable  boolean  Array.prototype.concat()时，是否可以展开
             Symbol.iterator
             Symbol.match
             Symbol.prototype
