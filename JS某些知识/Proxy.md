@@ -41,8 +41,26 @@ let p = new Proxy(target, handler);
 		const proxy = new Proxy(p,handle)
 		
 		if("age" in proxy){}
+		
+		```
+		```
+		const range = (min,max)=>new Proxy({},{
+			has(target, prop){
+				return (+prop >= min && +prop <= max)
+			}
+		})
+		if(1 in range(1,2)){}
 		```
 	* deleteProperty(target, propKey)：拦截delete proxy[propKey]的操作，返回一个布尔值。
+
+		```
+		const proxy = new Prosy({a:1},{
+			deleteProperty(target,propKey){
+				//return 1
+			}
+		})
+		delete proxy["a"]
+		```
 	
 	* ownKeys(target)：ownKeys方法用来拦截对象自身属性的读取操作，返回一个数组
 	
@@ -156,4 +174,29 @@ let p = new Proxy(target, handler);
 				return target.apply(thisArg,parms)
 			}
 		}}
+		```
+	* API
+
+		```
+		interface APIAble {
+		  init: Boolean;
+		  GET(): Promise<any>;
+		}
+		
+		const API = new Proxy<APIAble>({} as APIAble, {
+		  get(target: APIAble, props: string, receiver): any {
+		    if (target.init == null) {
+		      target.init = true;
+		      ["GET", "POST"].forEach($1 => {
+		        // Reflect.defineProperty(target, $1,{});
+		        target[$1] = (url, method, params) => {
+		          return new Promise((resolve, reject) => {
+		            resolve({ url, method, params, data: {} });
+		          });
+		        };
+		      });
+		    }
+		  }
+		});
+		// API.GET();
 		```
