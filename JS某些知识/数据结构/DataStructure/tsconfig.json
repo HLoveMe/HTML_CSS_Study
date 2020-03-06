@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "target": "es6",
+    "allowJs": true,
+    "jsx": "react",
+    "outDir": "./build",
+    "sourceMap": true,
+    "noImplicitAny": false,
+    "module": "es6",
+    "watch": true,
+    "types": ["react"],
+    "skipLibCheck": true,
+    "moduleResolution": "node"
+  },
+  "include": ["typings/**/*.d.ts", "src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["node_modules"]
+}

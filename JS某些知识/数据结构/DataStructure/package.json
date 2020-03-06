@@ -1,0 +1,12 @@
+{
+  "name": "datastructure",
+  "version": "1.0.0",
+  "description": "",
+  "main": "SingLinkList.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sing_link":"/usr/local/bin/node ./build/SingLinkList.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
