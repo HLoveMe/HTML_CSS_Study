@@ -189,3 +189,35 @@
 											| = 20
 	```
 	
+* 箭头函数 this绑定
+	
+	```
+	var ff = {
+		a:function(){
+			console.log(this)
+		},
+		b:()=>{
+			console.log(this)
+		}
+	};
+	ff.a();//ff
+	ff.b()//window
+	
+	ff.b.bind({c:1})()//window 
+	```
+	* 箭头函数的this 是静态绑定的
+	* 箭头函数的this 会绑定在最近的外层函数的this 上 ,直到window
+	* 箭头函数其实内部没有保留this。只会指向声明时的那一刻this 。重新绑定无效
+
+		``` 
+		var ff = {
+			a:function(){
+				return ()=>{
+					clg(this)
+				}
+			}
+		}
+		ff.a()()//ff
+		//嵌套一层可以解决bind问题
+		ff.a.bind({c:1})()()//{c:1}
+		```
